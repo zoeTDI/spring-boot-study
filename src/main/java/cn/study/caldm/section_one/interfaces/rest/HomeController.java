@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.study.caldm.shared_kernel.utils.Logger;
+
 @Controller
 public class HomeController {
 
@@ -13,8 +15,7 @@ public class HomeController {
     @RequestMapping("/")
     public String index() {
         String viewname = getViewName();
-        System.out.println(viewname);
-        System.out.println(appName);
+        Logger.info(viewname);
         return viewname;
     }
 
