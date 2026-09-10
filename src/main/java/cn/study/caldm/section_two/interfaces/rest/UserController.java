@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.study.caldm.section_two.application.service.UserService;
 import cn.study.caldm.section_two.domain.model.User;
+import cn.study.caldm.section_two.infrastructure.persistence.mapper.UserMapper;
 import cn.study.caldm.section_two.interfaces.dtos.UserDto;
 import lombok.AllArgsConstructor;
 
@@ -19,6 +20,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private final UserMapper userMapper;
 
     // @RequestMapping ("/users")
     @GetMapping
@@ -27,7 +29,8 @@ public class UserController {
         if (dos == null || dos.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(UserDto.toDtoList(dos));
+        List<UserDto> dtoList = dos.stream().map(userMapper::toDto).toList();
+        return ResponseEntity.ok(dtoList);
     }
 
     @GetMapping("/{id}")
@@ -36,7 +39,7 @@ public class UserController {
         if (user == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(UserDto.toDto(user));
+        return ResponseEntity.ok(userMapper.toDto(user));
     }
 
 }

@@ -13,20 +13,4 @@ public class UserDto {
     private Long id;
     private String name;
     private String email;
-
-    public static UserDto toDto(User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserDto(user.getId(), user.getName(), user.getEmail());
-    }
-
-    public static List<UserDto> toDtoList(List<User> userList) {
-        if (userList == null || userList.isEmpty()) {
-            return new ArrayList<>();
-        }
-        return userList.stream()
-                .map(user -> UserDto.toDto(user))
-                .toList();
-    }
 }
