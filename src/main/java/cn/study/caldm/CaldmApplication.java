@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import cn.study.caldm.section_one.interfaces.rest.application.service.OrderService;
-import cn.study.caldm.section_one.interfaces.rest.application.service.PayPalPaymentService;
-import cn.study.caldm.section_one.interfaces.rest.application.service.StripePaymentService;
+import cn.study.caldm.section_one.application.service.OrderService;
+import cn.study.caldm.section_one.application.service.PayPalPaymentService;
+import cn.study.caldm.section_one.application.service.StripePaymentService;
 
 @SpringBootApplication
 public class CaldmApplication {
